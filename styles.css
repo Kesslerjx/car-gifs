@@ -14,7 +14,7 @@ body {
     padding: 2vw;
     width: 75%;
     height: 100vh;
-    border: solid;
+    box-sizing: border-box;
     justify-content: space-between;
 }
 
