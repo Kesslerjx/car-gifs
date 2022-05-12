@@ -10,7 +10,7 @@ body {
 img {
     position: absolute;
     width: 75%;
-    top: 200px;
+    top: calc(25% + 75px);
     margin-top: auto;
     margin-bottom: auto;
     margin-left: auto;
@@ -21,18 +21,24 @@ img, button {
     border-radius: 15px;
 }
 
+.buttons {
+    margin-bottom: auto;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 15px;
+}
+
 button {
-    padding: 20px;
+    padding: 15px clamp(10px, 4vw, 40px);
     border-style: none;
-    font-size: 1.1rem;
+    font-size: clamp(0.7rem, 2vw, 1.1rem);
     background-color: darkslategrey;
     color: white;
     letter-spacing: 0.2rem;
-    margin-bottom: auto;
-    margin-top: 50px;
+    flex-shrink: 1;
 }
 
 button:hover {
-    font-weight: bold;
-    letter-spacing: 0.3rem;
+    font-size: 1.2rem;
 }

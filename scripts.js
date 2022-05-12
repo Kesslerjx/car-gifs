@@ -1,8 +1,34 @@
+const SEARCH_TERMS = [
+    'car',
+    'cars',
+    'vehicle',
+    'honda',
+    'acura',
+    'nissan',
+    'porsche',
+    'volkswagen',
+    'lamborghini',
+    'ferrari',
+    'ford',
+    'chevrolet',
+    'dodge',
+    'subaru',
+    'audi',
+    'toyota',
+    'lexus',
+    'tesla car',
+    'drifting',
+    'racing',
+    'speeding',
+    'saab',
+    'cadillac'
+];
+
 //Get img
 const img = document.querySelector('img');
-const btn = document.querySelector('button');
+const anotherBtn = document.querySelector('#another-one');
 
-btn.addEventListener('click', loadGif);
+anotherBtn.addEventListener('click', loadGif);
 
 //Load a gif when the page is first loaded
 loadGif();
@@ -10,7 +36,7 @@ loadGif();
 //Gets a gif and sets the img src
 function loadGif() {
     //Get data using API
-    fetch('https://api.giphy.com/v1/gifs/translate?api_key=AZGROnykDbgROhJPnliNZFjfmWVFdFAM&s=car', {mode: 'cors'})
+    fetch(`https://api.giphy.com/v1/gifs/translate?api_key=AZGROnykDbgROhJPnliNZFjfmWVFdFAM&s=${randomTerm()}`, {mode: 'cors'})
         .then(function(response) {
             //Return promise that contains the data
             return response.json();
@@ -23,5 +49,9 @@ function loadGif() {
             console.log('There was some sort of error, resorting to backup src.');
             img.src = 'https://media.giphy.com/media/TqiwHbFBaZ4ti/giphy.gif';
         });
+}
+
+function randomTerm() {
+    return SEARCH_TERMS[Math.floor(Math.random()*SEARCH_TERMS.length)];
 }
 
