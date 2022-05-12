@@ -37,6 +37,20 @@ const anotherBtn = document.querySelector('#another-one');
 const forwardBtn = document.querySelector('#forward-button');
 const gifLink = document.querySelector('#gif-link');
 
+//For media query
+function changeButtonText(query) {
+    if(query.matches) {
+        anotherBtn.textContent = 'Another';
+    } else {
+        anotherBtn.textContent = 'Another one';
+    }
+}
+
+const query = window.matchMedia('(max-width: 450px)');
+changeButtonText(query);
+query.addEventListener('change', changeButtonText);
+//For media query
+
 previousBtn.addEventListener('click', previous);
 anotherBtn.addEventListener('click', loadGif);
 forwardBtn.addEventListener('click', forward);
