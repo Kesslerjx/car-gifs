@@ -27,6 +27,7 @@ const SEARCH_TERMS = [
 //Get img
 const img = document.querySelector('img');
 const anotherBtn = document.querySelector('#another-one');
+const gifLink = document.querySelector('#gif-link');
 
 anotherBtn.addEventListener('click', loadGif);
 
@@ -44,14 +45,20 @@ function loadGif() {
         .then(function(response){
             //Set img src to the URL
             img.src = response.data.images.original.url;
+            setLinkHref(img.src);
         })
         .catch(function(error) {
             console.log('There was some sort of error, resorting to backup src.');
             img.src = 'https://media.giphy.com/media/TqiwHbFBaZ4ti/giphy.gif';
+            setLinkHref(img.src);
         });
 }
 
 function randomTerm() {
     return SEARCH_TERMS[Math.floor(Math.random()*SEARCH_TERMS.length)];
+}
+
+function setLinkHref(url) {
+    gifLink.href = url;
 }
 
